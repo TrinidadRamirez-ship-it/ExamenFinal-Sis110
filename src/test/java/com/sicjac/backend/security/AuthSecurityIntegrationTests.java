@@ -90,10 +90,11 @@ class AuthSecurityIntegrationTests {
                 .andExpect(status().isUnauthorized());
 
         mockMvc.perform(post("/api/auth/login")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"email\":\"missing@example.com\",\"password\":\"wrong-password\"}"))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"email\":\"missing@example.com\",\"password\":\"wrong-password\"}"))
                 .andExpect(status().isUnauthorized())
-                .andExpect(jsonPath("$.title").value("Credenciales inválidas"));
+                .andExpect(jsonPath("$.estado").value(401))
+                .andExpect(jsonPath("$.mensaje").value("El correo electronico o la contrasena son incorrectos."));
     }
 
     @Test
@@ -104,9 +105,10 @@ class AuthSecurityIntegrationTests {
                 .andExpect(status().isCreated());
 
         mockMvc.perform(post("/api/auth/register")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(REGISTER_BODY))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(REGISTER_BODY))
                 .andExpect(status().isConflict())
-                .andExpect(jsonPath("$.title").value("Correo ya registrado"));
+                .andExpect(jsonPath("$.estado").value(409))
+                .andExpect(jsonPath("$.mensaje").value("Ya existe una cuenta registrada con ese correo electrónico."));
     }
 }

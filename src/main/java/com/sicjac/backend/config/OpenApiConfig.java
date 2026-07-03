@@ -17,9 +17,9 @@ public class OpenApiConfig {
     OpenAPI backendOpenApi() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Backend API")
-                        .description("Documentación de endpoints del backend")
-                        .version("v1"))
+                        .title("Examen Final SIS110 API")
+                        .version("1.0.0")
+                        .description("Documentacion REST del backend Spring Boot."))
                 .addSecurityItem(new SecurityRequirement().addList(JWT_SECURITY_SCHEME))
                 .components(new Components()
                         .addSecuritySchemes(JWT_SECURITY_SCHEME, new SecurityScheme()
