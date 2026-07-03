@@ -1,27 +1,33 @@
 # Frontend
 
-Carpeta destinada al desarrollo del frontend del proyecto **ExamenFinal-Sis110**.
+Interfaz React para el proyecto **ExamenFinal-Sis110**.
 
-## Objetivo
+## Tecnologias
 
-Aquí se trabajará la interfaz de usuario que consumirá el backend Spring Boot.
+- React
+- Vite
+- React Router
+- Lucide React
 
-## Recomendación de trabajo
+## Ejecutar
 
-- Mantener aquí todo el código del frontend.
-- No mezclar archivos del backend dentro de esta carpeta.
-- Cuando se elija la tecnología del frontend, instalarla dentro de esta carpeta.
-
-## Posibles tecnologías
-
-- React con Vite
-- Angular
-- Vue
+```powershell
+npm install
+npm run dev
+```
 
 ## Backend
 
-El backend se mantiene en la raíz del proyecto y expone la documentación Swagger en:
+El backend Spring Boot debe estar levantado en:
+
+```text
+http://localhost:8080
+```
+
+Swagger:
 
 ```text
 http://localhost:8080/swagger-ui/index.html
 ```
+
+Para usar la pantalla `Estudiantes`, inicia sesion con el backend y pega el token JWT generado por `/api/auth/login`.

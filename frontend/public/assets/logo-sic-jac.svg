@@ -1,0 +1,6 @@
+<svg width="180" height="56" viewBox="0 0 180 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="180" height="56" rx="8" fill="#0F766E"/>
+  <path d="M18 16H38C44.6274 16 50 21.3726 50 28C50 34.6274 44.6274 40 38 40H18V16Z" fill="#F8FAFC"/>
+  <path d="M25 24H38C40.2091 24 42 25.7909 42 28C42 30.2091 40.2091 32 38 32H25V24Z" fill="#14B8A6"/>
+  <text x="62" y="35" fill="#F8FAFC" font-family="Arial, sans-serif" font-size="24" font-weight="700">SIC-JAC</text>
+</svg>
