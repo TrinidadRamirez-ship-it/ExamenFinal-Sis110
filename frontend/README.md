@@ -1,27 +1,31 @@
-# Frontend
+# Frontend dev-abril
 
-Carpeta destinada al desarrollo del frontend del proyecto **ExamenFinal-Sis110**.
+Base React del proyecto **ExamenFinal-Sis110**.
 
-## Objetivo
+## Responsabilidad de esta rama
 
-Aquí se trabajará la interfaz de usuario que consumirá el backend Spring Boot.
+- Layout general y navegacion principal.
+- Pagina de inicio.
+- Catalogo de productos.
+- Detalle de cada modulo.
+- Componentes reutilizables.
+- Estilos globales y responsive.
 
-## Recomendación de trabajo
+## Ejecutar
 
-- Mantener aquí todo el código del frontend.
-- No mezclar archivos del backend dentro de esta carpeta.
-- Cuando se elija la tecnología del frontend, instalarla dentro de esta carpeta.
+```powershell
+npm install
+npm run dev
+```
 
-## Posibles tecnologías
-
-- React con Vite
-- Angular
-- Vue
-
-## Backend
-
-El backend se mantiene en la raíz del proyecto y expone la documentación Swagger en:
+La aplicacion estara disponible en:
 
 ```text
-http://localhost:8080/swagger-ui/index.html
+http://localhost:5173
+```
+
+## Compilar
+
+```powershell
+npm run build
 ```
