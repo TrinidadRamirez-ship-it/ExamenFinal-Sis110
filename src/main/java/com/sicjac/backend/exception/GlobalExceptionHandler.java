@@ -3,6 +3,7 @@ package com.sicjac.backend.exception;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -13,6 +14,28 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    @ExceptionHandler(EmailAlreadyExistsException.class)
+    ProblemDetail handleEmailAlreadyExists(EmailAlreadyExistsException exception) {
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(
+                HttpStatus.CONFLICT,
+                exception.getMessage()
+        );
+        problem.setTitle("Correo ya registrado");
+        problem.setType(URI.create("https://sicjac.com/problems/email-already-exists"));
+        return problem;
+    }
+
+    @ExceptionHandler(AuthenticationException.class)
+    ProblemDetail handleAuthentication(AuthenticationException exception) {
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(
+                HttpStatus.UNAUTHORIZED,
+                "El correo electrónico o la contraseña son incorrectos."
+        );
+        problem.setTitle("Credenciales inválidas");
+        problem.setType(URI.create("https://sicjac.com/problems/invalid-credentials"));
+        return problem;
+    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     ProblemDetail handleMethodArgumentNotValid(MethodArgumentNotValidException exception) {
