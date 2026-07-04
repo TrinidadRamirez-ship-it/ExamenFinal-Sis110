@@ -5,6 +5,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -35,6 +36,24 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         );
 
         return handleExceptionInternal(exception, response, headers, HttpStatus.BAD_REQUEST, request);
+    }
+
+    @ExceptionHandler(EmailAlreadyExistsException.class)
+    public ResponseEntity<ApiErrorResponse> handleEmailAlreadyExists(EmailAlreadyExistsException exception) {
+        return buildResponse(
+                HttpStatus.CONFLICT,
+                exception.getMessage(),
+                Map.of("email", "Ya existe una cuenta registrada con ese correo.")
+        );
+    }
+
+    @ExceptionHandler(AuthenticationException.class)
+    public ResponseEntity<ApiErrorResponse> handleAuthentication(AuthenticationException exception) {
+        return buildResponse(
+                HttpStatus.UNAUTHORIZED,
+                "El correo electronico o la contrasena son incorrectos.",
+                Map.of("credenciales", "Invalidas")
+        );
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
